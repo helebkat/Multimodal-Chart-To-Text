@@ -169,11 +169,11 @@ This baseline is important so we can clearly say:
 
 ---
 
-Fine-tuning strategy (PEFT + 4-bit) — explained clearly
+### Fine-tuning strategy (PEFT + 4-bit) — explained clearly
 
 We use LoRA (Low-Rank Adaptation) + 4-bit quantization to fit training on a T4.
 
-Why LoRA?
+### Why LoRA?
 
 Instead of updating all weights (too heavy), LoRA:
 
@@ -183,7 +183,7 @@ learns small trainable low-rank matrices
 
 gives most of the benefit with a tiny fraction of parameters
 
-Why 4-bit quantization?
+### Why 4-bit quantization?
 
 We load most weights in 4-bit (bitsandbytes) to reduce VRAM usage.
 This is basically the “QLoRA-style” approach:
@@ -193,3 +193,67 @@ base weights in 4-bit
 LoRA weights trainable (small)
 
 compute in bf16 for stability
+
+---
+
+### Training command (SWIFT SFT)
+
+We fine-tune with ms-swift using the swift sft command:
+
+Key training settings we use:
+
+- train_type: lora
+- quant_method: bnb, quant_bits: 4
+- torch_dtype: bfloat16
+- batch size: 1 (per device), plus gradient accumulation
+- gradient_accumulation_steps: 8
+- learning_rate: 2e-4
+- epochs: 9
+- max_length: 8192
+- model kwargs: {"max_num": 1, "image_size": 448}
+
+Output goes into something like:
+```
+outputs/internvl2-1b-chartqa-qlora-aug-full-clean/
+```
+
+---
+
+### After training: load the LoRA adapter
+
+We do **adapter loading** instead of merging weights (keeps the base model untouched):
+
+Load base InternVL2-1B
+
+Attach the LoRA adapter from output dir
+
+Run inference normally
+
+That’s why this approach is neat:
+
+base model stays the same
+
+adapter is portable (small)
+
+easy to share and re-use
+
+---
+
+### Evaluation (after fine-tuning)
+
+We run the same evaluation loop again on the validation set:
+- same normalization
+- same exact match scoring
+- log predictions for error analysis
+
+Suggested things we look at in analysis:
+
+- numeric mistakes (rounding, formatting)
+- OCR-type failures (axis labels, legends)
+- multi-step reasoning failures (compare two bars, trend over time)
+
+<img width="1146" height="294" alt="image" src="https://github.com/user-attachments/assets/261c5196-497b-4be3-a1c7-f3bb7a7edd76" />
+
+
+---
+
