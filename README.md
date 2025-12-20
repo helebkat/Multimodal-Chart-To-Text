@@ -1,4 +1,4 @@
-# Multimodal Chart-To-Text Generator for Reports (ChartNarrator)
+# Multimodal Chart-To-Text Generator for Reports 
 
 This repo is our end-to-end pipeline to **fine-tune InternVL2-1B on ChartQA** so the model gets better at reading charts and answering chart-based questions (and ultimately generating clean chart-to-text explanations you can reuse in reports).
 
@@ -6,7 +6,7 @@ It’s built to run on **Colab Pro (A100 GPU)**, LoRA + 4-bit quantization inste
 
 ---
 
-## What this project does (in plain words)
+## What this project does 
 
 Charts are everywhere (dashboards, papers, reports), but extracting meaning from them is still annoying:
 - you need OCR-ish understanding (axis labels, legends, numbers),
@@ -17,7 +17,7 @@ So we take a strong multimodal base model (**InternVL2-1B**) and fine-tune it sp
 
 ---
 
-## Model we fine-tune: InternVL2-1B (quick but detailed)
+## Model we fine-tune: InternVL2-1B 
 
 **InternVL2-1B** is a small-but-strong multimodal model made of:
 
@@ -167,7 +167,7 @@ This baseline is important so we can clearly say:
 
 ---
 
-### Fine-tuning strategy (PEFT + 4-bit) — explained clearly
+### Fine-tuning strategy (PEFT + 4-bit) 
 
 We use LoRA (Low-Rank Adaptation) + 4-bit quantization to fit training on a T4.
 
