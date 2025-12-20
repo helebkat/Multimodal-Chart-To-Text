@@ -28,7 +28,7 @@ So we take a strong multimodal base model (**InternVL2-1B**) and fine-tune it sp
   - `image_size = 448`
   - `max_num = 1` (single tile / single image chunk)
 
-### 2) MLP Projector (Vision → Language bridge)
+### 2) MLP Projector (Vision -> Language bridge)
 - The vision encoder outputs visual features.
 - The MLP projector maps those features into the same embedding space that the language model can “understand”.
 - This is the bridge that lets the LLM attend to image content.
