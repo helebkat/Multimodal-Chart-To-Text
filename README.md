@@ -2,7 +2,7 @@
 
 This repo is our end-to-end pipeline to **fine-tune InternVL2-1B on ChartQA** so the model gets better at reading charts and answering chart-based questions (and ultimately generating clean chart-to-text explanations you can reuse in reports).
 
-It’s built to run on **Colab Free (T4 GPU)**, so everything here is designed to be **lightweight + practical** (LoRA + 4-bit quantization instead of full fine-tuning).
+It’s built to run on **Colab Pro (A100 GPU)**, LoRA + 4-bit quantization instead of full fine-tuning.
 
 ---
 
