@@ -286,6 +286,15 @@ Same notebook works, but make sure:
 - ms-swift installed
 - enough disk space for ChartQA images
 
+---
+
+**Conclusion**
+
+- Successfully fine-tuned a large multimodal model on ChartQA using limited resources
+- Demonstrated the effectiveness of QLoRA + safe augmentation.
+- Achieved measurable gains over baseline
+- Built a fully reproducible end-to-end multimodal training pipeline
+
 
 
 
