@@ -69,13 +69,12 @@ Repo Structure
 ```
 
 Multimodal-Chart-To-Text/
-├── ChartNarrator/
+├── ChartNarrator/            # one previous iteration
 │   ├── data/                 # (optional) extra local data pointers / scripts
 │   ├── outputs/              # training outputs, checkpoints, logs
-│   ├── src/                  # any helper scripts (optional)
-│   ├── README.md             # (this file if you move it inside)
+│   ├── src/                  # helper scripts        
 │   └── requirements.txt
-├── intern_chart_qa.ipynb     # main notebook (can also move inside ChartNarrator/)
+├── intern_chart_qa.ipynb     # main notebook 
 └── .gitignore
 ```
 
