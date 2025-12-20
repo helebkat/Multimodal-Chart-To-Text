@@ -108,11 +108,9 @@ Step 1 — Download ChartQA and save locally
 
 We pull ChartQA from HuggingFace and store:
 
-images in chartqa_local/images/...
-
-metadata in chartqa_local/metadata/train.csv, val.csv
-
-This makes the pipeline repeatable and avoids re-downloading every run.
+- images in chartqa_local/images/...
+- metadata in chartqa_local/metadata/train.csv, val.csv
+- This makes the pipeline repeatable and avoids re-downloading every run.
 
 ---
 
@@ -177,22 +175,18 @@ We use LoRA (Low-Rank Adaptation) + 4-bit quantization to fit training on a T4.
 
 Instead of updating all weights (too heavy), LoRA:
 
-freezes the base model
-
-learns small trainable low-rank matrices
-
-gives most of the benefit with a tiny fraction of parameters
+- freezes the base model
+- learns small trainable low-rank matrices
+- gives most of the benefit with a tiny fraction of parameters
 
 ### Why 4-bit quantization?
 
 We load most weights in 4-bit (bitsandbytes) to reduce VRAM usage.
 This is basically the “QLoRA-style” approach:
 
-base weights in 4-bit
-
-LoRA weights trainable (small)
-
-compute in bf16 for stability
+- base weights in 4-bit
+- LoRA weights trainable (small)
+- compute in bf16 for stability
 
 ---
 
@@ -223,19 +217,15 @@ outputs/internvl2-1b-chartqa-qlora-aug-full-clean/
 
 We do **adapter loading** instead of merging weights (keeps the base model untouched):
 
-Load base InternVL2-1B
-
-Attach the LoRA adapter from output dir
-
-Run inference normally
+- Load base InternVL2-1B
+- Attach the LoRA adapter from output dir
+- Run inference normally
 
 That’s why this approach is neat:
 
-base model stays the same
-
-adapter is portable (small)
-
-easy to share and re-use
+- base model stays the same
+- adapter is portable (small)
+- easy to share and re-use
 
 ---
 
@@ -292,14 +282,9 @@ Run cells top-to-bottom:
 Option B — Local / GPU machine
 
 Same notebook works, but make sure:
-
-CUDA is available
-
-ms-swift installed
-
-enough disk space for ChartQA images
-
-
+- CUDA is available
+- ms-swift installed
+- enough disk space for ChartQA images
 
 
 
