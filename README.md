@@ -252,8 +252,59 @@ Suggested things we look at in analysis:
 - OCR-type failures (axis labels, legends)
 - multi-step reasoning failures (compare two bars, trend over time)
 
+---
+### Results
+
 <img width="1146" height="294" alt="image" src="https://github.com/user-attachments/assets/261c5196-497b-4be3-a1c7-f3bb7a7edd76" />
+
+**LLM Training and Sample input**
+1. <img width="1152" height="988" alt="image" src="https://github.com/user-attachments/assets/d53cc93a-8c4b-4535-9f70-0a80b02513fc" />
+
+2. <img width="864" height="1078" alt="image" src="https://github.com/user-attachments/assets/ecb65c5b-19d6-4eed-89a0-c349e0b486f5" />
+
+### Some predictions by Vision Language Model
+
+1. <img width="1298" height="1052" alt="image" src="https://github.com/user-attachments/assets/d1aedbbc-43eb-4b07-8bdb-00588d1b95fc" />
+
+### Validation Results
+
+1. <img width="1956" height="454" alt="image" src="https://github.com/user-attachments/assets/fe98c34c-2e61-4c6e-8181-bf3fd3d2c2f8" />
+
+### Few wrong prediction by model
+
+1. <img width="1114" height="570" alt="image" src="https://github.com/user-attachments/assets/2abb11d3-0f5c-4784-9085-4ddcead2dc2a" />
+
+---
+
+How to run (recommended order)
+Option A — Colab (simplest)
+
+Open intern_chart_qa.ipynb
+
+Run cells top-to-bottom:
+- install
+- download ChartQA
+- preprocess + augment
+- baseline eval
+- fine-tune with swift sft
+- load adapter + final eval
+
+Option B — Local / GPU machine
+
+Same notebook works, but make sure:
+
+CUDA is available
+
+ms-swift installed
+
+enough disk space for ChartQA images
+
+
+
+
 
 
 ---
+
+
 
